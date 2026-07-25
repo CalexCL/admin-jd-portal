@@ -1,0 +1,18 @@
+{
+  "name": "MYEDEN JD Digital Portal \u2014 Admin Edition",
+  "short_name": "MYEDEN JD",
+  "description": "Searchable offline employee edition of the MYEDEN Group Job Description Manual",
+  "start_url": "./#/",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#163c63",
+  "icons": [
+    {
+      "src": "./assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

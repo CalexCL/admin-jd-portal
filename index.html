@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#163c63" />
+  <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <meta name="description" content="MYEDEN Group Digital Job Description Manual — employee view with encrypted static admin access" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>MYEDEN JD Digital Portal</title>
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="topbar">
+      <button id="mobile-menu-button" class="icon-button mobile-only" type="button" aria-label="Open navigation">☰</button>
+      <a class="brand" href="#/">
+        <span class="brand-mark">M</span>
+        <span><strong>MYEDEN</strong><small>JD Digital Portal</small></span>
+      </a>
+      <div class="topbar-actions">
+        <span id="mode-badge" class="mode-badge employee">Employee View</span>
+        <button id="admin-button" class="compact-button admin-login-button" type="button">Admin Login</button>
+        <button id="install-button" class="compact-button hidden" type="button">Install</button>
+        <button id="theme-button" class="icon-button" type="button" aria-label="Toggle colour theme">◐</button>
+        <button id="compare-button" class="compact-button hidden" type="button">Compare</button>
+      </div>
+    </header>
+
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-mobile-head mobile-only">
+        <strong>Navigation</strong>
+        <button id="sidebar-close" class="icon-button" type="button" aria-label="Close navigation">×</button>
+      </div>
+      <nav id="primary-nav">
+        <a href="#/" data-route="home">⌂ <span>Master Register</span></a>
+        <a href="#/bookmarks" data-route="bookmarks">☆ <span>Bookmarks</span></a>
+        <a href="#/compare" data-route="compare">▥ <span>Compare Levels</span></a>
+        <a href="#/about" data-route="about">ⓘ <span>About Manual</span></a>
+      </nav>
+      <div class="sidebar-heading">Departments</div>
+      <nav id="department-nav" class="department-nav"></nav>
+      <div class="sidebar-footer">
+        <small id="sidebar-version">Version 2.0</small>
+      </div>
+    </aside>
+    <button id="sidebar-scrim" class="sidebar-scrim mobile-only hidden" type="button" aria-label="Close navigation"></button>
+
+    <main id="main-content" class="main-content" tabindex="-1">
+      <div id="status-region" aria-live="polite"></div>
+      <div id="page"></div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status"></div>
+
+  <div id="admin-dialog" class="dialog-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="admin-dialog-title">
+    <div class="dialog admin-dialog">
+      <button id="admin-dialog-close" class="dialog-close" type="button" aria-label="Close admin login">×</button>
+      <div class="dialog-icon">🔐</div>
+      <h2 id="admin-dialog-title">Admin Login</h2>
+      <p>Authorised Management users may unlock confidential salary bands and controlled-document information.</p>
+      <form id="admin-login-form" autocomplete="off">
+        <label>Username<input id="admin-username" name="username" type="text" required autocomplete="username" /></label>
+        <label>Password<input id="admin-password" name="password" type="password" required autocomplete="current-password" /></label>
+        <label class="show-password-row"><input id="show-admin-password" type="checkbox" /> <span>Show password</span></label>
+        <div id="admin-login-error" class="form-error hidden" role="alert"></div>
+        <button id="admin-login-submit" class="primary wide" type="submit">Unlock Admin View</button>
+      </form>
+      <div class="static-security-note"><strong>Static access notice:</strong> the salary file is encrypted in the browser, but GitHub Pages cannot provide server-side access control. Use a strong private password and rotate it when staff access changes.</div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('error', function (event) {
+      var page = document.getElementById('page');
+      if (page && !page.textContent.trim()) {
+        page.innerHTML = '<div class="empty-state"><h2>Portal could not start</h2><p>' +
+          String(event.message || 'A JavaScript file did not load.') +
+          '</p><p>Refresh the page after replacing the GitHub files with the fixed package.</p></div>';
+      }
+    });
+  </script>
+  <script defer src="./portal-data.js"></script>
+  <script defer src="./app.js"></script>
+</body>
+</html>

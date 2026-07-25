@@ -1,0 +1,2 @@
+MYEDEN JD Static GitHub Admin Edition v1.0
+Encrypted client-side admin access

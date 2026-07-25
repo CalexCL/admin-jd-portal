@@ -1,0 +1,8 @@
+{
+  "username": "jdadmin",
+  "encryptedDataFile": "./data/admin-data.enc.json",
+  "sessionTimeoutMinutes": 20,
+  "maxFailedAttempts": 5,
+  "lockoutSeconds": 60,
+  "editionLabel": "Confidential Admin View"
+}
